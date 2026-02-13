@@ -1,5 +1,6 @@
 SECTION "mgblib", ROMX
 INCLUDE "mgblib/src/hardware.inc"
+DEF _OAMRAM EQU $FE00
 INCLUDE "mgblib/src/macros.asm"
     enable_cgb_mode   
 INCLUDE "mgblib/src/old_skool_outline_thick.asm"
@@ -125,9 +126,9 @@ Main::
     ld a, $58 + 7
     ldh [rWX], a
 
-    win_map_9c00
-    enable_sprites
-    bg_tile_data_8000
+    set_win_map_9c00
+    set_sprites_on
+    set_bg_tile_data_8000
     lcd_on
 
     xor a
